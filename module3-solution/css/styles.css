@@ -1,0 +1,45 @@
+p {
+	font-family: Comic Sans MS;
+	color: black;
+}
+
+h1 {
+	font-family: Comic Sans MS;
+	margin-bottom: 40px;
+}
+
+h3 {
+	font-family: Comic Sans MS;
+	text-align: center;
+	color: black;
+	margin-top: 5px;
+}
+
+.row {
+	background-color: gray;
+	margin: 20px;
+}
+
+/** HEADER **/
+#header-nav {
+	font-family: Comic Sans MS;
+	background-color: gray;
+	border: 3px solid black;
+}
+
+#nav-list {
+	background: white;
+}
+
+#nav-list li {
+	text-align: center;
+	color: black;
+	padding: 10px;
+	border: 1px solid black;
+}
+
+.navbar-header button.navbar-toggle, .navbar-header .icon-bar {
+	border: 1px solid black;
+}
+
+/** END OF HEADER **/
