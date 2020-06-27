@@ -83,12 +83,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
 showLoading("#main-content");
 $ajaxUtils.sendGetRequest(
   allCategoriesUrl,
-  function (buildAndShowHomeHTML){ //IVI
-    document.querySelector("#main-content") //IVI
-    .innerHTML = buildAndShowHomeHTML; //IVI
-  }, // ***** <---- TODO: STEP 1: Substitute [...] ****** IVI
+  buildAndShowHomeHTML, //modified ***** <---- TODO: STEP 1: Substitute [...] ****** IVI
   true); // Explicitly setting the flag to get JSON from server processed into an object literal
-}); //IVI
+}); //modified
 // *** finish **
 
 
@@ -104,7 +101,7 @@ function buildAndShowHomeHTML (categories) {
       // TODO: STEP 2: Here, call chooseRandomCategory, passing it retrieved 'categories'
       // Pay attention to what type of data that function returns vs what the chosenCategoryShortName
       // variable's name implies it expects.
-      var chosenCategoryShortName = chooseRandomCategory(categories); //IVI 
+      var chosenCategoryShortName = chooseRandomCategory(categories).short_name; //modified 
 
 
       // TODO: STEP 3: Substitute {{randomCategoryShortName}} in the home html snippet with the
@@ -117,20 +114,16 @@ function buildAndShowHomeHTML (categories) {
       // $dc.loadMenuItems('L')
       // Hint: you need to surround the chosen category short name with something before inserting
       // it into the home html snippet.
-      //
-      var homeHtmlToInsertIntoMainPage = "snippets/home-snippet.html"; //IVI
+      chosenCategoryShortName = "'" + chosenCategoryShortName + "'"; //modified
+      var homeHtmlToInsertIntoMainPage = insertProperty(homeHtml, "randomCategoryShortName", chosenCategoryShortName); //modified
 
 
       // TODO: STEP 4: Insert the produced HTML in STEP 3 into the main page
       // Use the existing insertHtml function for that purpose. Look through this code for an example
       // of how to do that.
-      var insertHtml = function (selector, html) { //IVI
-        var targetElem = document.querySelector(selector); //IVI
-        targetElem.innerHTML = html; //IVI
-      }; //IVI
-
-    },
-    false); // False here because we are getting just regular HTML from the server, so no need to process JSON.
+      insertHtml("#main-content", homeHtmlToInsertIntoMainPage); //modified
+      }, //modified
+      false); // False here because we are getting just regular HTML from the server, so no need to process JSON.
 }
 
 
